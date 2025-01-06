@@ -1,0 +1,101 @@
+{
+  "kind": "collectionType",
+  "collectionName": "blogs",
+  "info": {
+    "singularName": "blog",
+    "pluralName": "blogs",
+    "displayName": "blogs",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "content": {
+      "type": "blocks",
+      "required": true
+    },
+    "published": {
+      "type": "datetime"
+    },
+    "updated": {
+      "type": "date"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
+    },
+    "subtitle": {
+      "type": "string",
+      "maxLength": 255
+    },
+    "author": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::author.author",
+      "inversedBy": "blogs"
+    },
+    "blog_category": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::blog-categorie.blog-categorie",
+      "inversedBy": "blogs"
+    },
+    "tags": {
+      "type": "json"
+    },
+    "slug": {
+      "type": "string",
+      "unique": true,
+      "required": true,
+      "maxLength": 255
+    },
+    "featured_image": {
+      "type": "string",
+      "maxLength": 255,
+      "required": true
+    },
+    "excerpt": {
+      "type": "string",
+      "maxLength": 400
+    },
+    "blog_status": {
+      "type": "enumeration",
+      "enum": [
+        "draft",
+        "published"
+      ],
+      "default": "draft"
+    },
+    "views": {
+      "type": "integer",
+      "default": 0
+    },
+    "comments_count": {
+      "type": "integer",
+      "default": 0
+    },
+    "seo_meta_title": {
+      "type": "string",
+      "required": false,
+      "maxLength": 255
+    },
+    "seo_meta_description": {
+      "type": "string",
+      "maxLength": 255
+    },
+    "is_featured": {
+      "type": "boolean",
+      "default": false
+    }
+  }
+}
