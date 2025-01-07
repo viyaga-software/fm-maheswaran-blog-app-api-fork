@@ -71,11 +71,7 @@
       "maxLength": 70,
       "minLength": 1
     },
-    "prime_membership": {
-      "type": "decimal",
-      "default": 0
-    },
-    "user_status": {
+    "admin_status": {
       "type": "integer",
       "default": 1
     },

@@ -19,12 +19,6 @@
       "type": "blocks",
       "required": true
     },
-    "published": {
-      "type": "datetime"
-    },
-    "updated": {
-      "type": "date"
-    },
     "image": {
       "type": "media",
       "multiple": false,
@@ -44,9 +38,9 @@
       "target": "api::author.author",
       "inversedBy": "blogs"
     },
-    "blog_category": {
+    "blog_categories": {
       "type": "relation",
-      "relation": "manyToOne",
+      "relation": "manyToMany",
       "target": "api::blog-categorie.blog-categorie",
       "inversedBy": "blogs"
     },
@@ -96,6 +90,12 @@
     "is_featured": {
       "type": "boolean",
       "default": false
+    },
+    "comments": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::comment.comment",
+      "mappedBy": "blog"
     }
   }
 }
