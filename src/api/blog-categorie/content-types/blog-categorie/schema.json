@@ -29,12 +29,6 @@
     "parent_id": {
       "type": "integer",
       "default": 0
-    },
-    "blogs": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::blog.blog",
-      "mappedBy": "blog_categories"
     }
   }
 }

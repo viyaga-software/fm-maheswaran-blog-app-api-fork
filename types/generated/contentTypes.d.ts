@@ -381,6 +381,8 @@ export interface ApiAuthorAuthor extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
+    author_status: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<1>;
+    blocks: Schema.Attribute.RichText;
     blogs: Schema.Attribute.Relation<'oneToMany', 'api::blog.blog'>;
     country: Schema.Attribute.String;
     createdAt: Schema.Attribute.DateTime;
@@ -408,7 +410,6 @@ export interface ApiAuthorAuthor extends Struct.CollectionTypeSchema {
     > &
       Schema.Attribute.Private;
     Password: Schema.Attribute.Password &
-      Schema.Attribute.Required &
       Schema.Attribute.SetMinMaxLength<{
         minLength: 5;
       }>;
@@ -416,6 +417,12 @@ export interface ApiAuthorAuthor extends Struct.CollectionTypeSchema {
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    username: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 50;
+      }>;
   };
 }
 
@@ -431,7 +438,6 @@ export interface ApiBlogCategorieBlogCategorie
     draftAndPublish: true;
   };
   attributes: {
-    blogs: Schema.Attribute.Relation<'manyToMany', 'api::blog.blog'>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -475,15 +481,10 @@ export interface ApiBlogBlog extends Struct.CollectionTypeSchema {
   };
   attributes: {
     author: Schema.Attribute.Relation<'manyToOne', 'api::author.author'>;
-    blog_categories: Schema.Attribute.Relation<
-      'manyToMany',
-      'api::blog-categorie.blog-categorie'
-    >;
     blog_status: Schema.Attribute.Enumeration<['draft', 'published']> &
       Schema.Attribute.DefaultTo<'draft'>;
     comments: Schema.Attribute.Relation<'oneToMany', 'api::comment.comment'>;
     comments_count: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<0>;
-    content: Schema.Attribute.Blocks & Schema.Attribute.Required;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;

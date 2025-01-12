@@ -15,10 +15,6 @@
     "title": {
       "type": "string"
     },
-    "content": {
-      "type": "blocks",
-      "required": true
-    },
     "image": {
       "type": "media",
       "multiple": false,
@@ -36,12 +32,6 @@
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::author.author",
-      "inversedBy": "blogs"
-    },
-    "blog_categories": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::blog-categorie.blog-categorie",
       "inversedBy": "blogs"
     },
     "tags": {

@@ -35,11 +35,24 @@
     },
     "Password": {
       "type": "password",
-      "required": true,
+      "required": false,
       "minLength": 5
     },
     "country": {
       "type": "string"
+    },
+    "blocks": {
+      "type": "richtext"
+    },
+    "author_status": {
+      "type": "integer",
+      "default": 1
+    },
+    "username": {
+      "type": "string",
+      "required": true,
+      "unique": true,
+      "maxLength": 50
     }
   }
 }
