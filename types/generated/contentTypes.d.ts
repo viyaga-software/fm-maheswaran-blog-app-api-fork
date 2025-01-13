@@ -438,6 +438,7 @@ export interface ApiBlogCategorieBlogCategorie
     draftAndPublish: true;
   };
   attributes: {
+    blogs: Schema.Attribute.Relation<'manyToMany', 'api::blog.blog'>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -481,10 +482,20 @@ export interface ApiBlogBlog extends Struct.CollectionTypeSchema {
   };
   attributes: {
     author: Schema.Attribute.Relation<'manyToOne', 'api::author.author'>;
-    blog_status: Schema.Attribute.Enumeration<['draft', 'published']> &
+    blog_categories: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::blog-categorie.blog-categorie'
+    >;
+    blog_status: Schema.Attribute.Enumeration<
+      ['draft', 'published', 'deleted']
+    > &
       Schema.Attribute.DefaultTo<'draft'>;
     comments: Schema.Attribute.Relation<'oneToMany', 'api::comment.comment'>;
     comments_count: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<0>;
+    content: Schema.Attribute.Text &
+      Schema.Attribute.SetMinMaxLength<{
+        minLength: 2;
+      }>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;

@@ -56,7 +56,8 @@
       "type": "enumeration",
       "enum": [
         "draft",
-        "published"
+        "published",
+        "deleted"
       ],
       "default": "draft"
     },
@@ -86,6 +87,16 @@
       "relation": "oneToMany",
       "target": "api::comment.comment",
       "mappedBy": "blog"
+    },
+    "blog_categories": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::blog-categorie.blog-categorie",
+      "inversedBy": "blogs"
+    },
+    "content": {
+      "type": "text",
+      "minLength": 2
     }
   }
 }
