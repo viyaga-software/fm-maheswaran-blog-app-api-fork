@@ -390,6 +390,7 @@ export interface ApiAuthorAuthor extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     email: Schema.Attribute.Email &
       Schema.Attribute.Required &
+      Schema.Attribute.Unique &
       Schema.Attribute.SetMinMaxLength<{
         maxLength: 100;
       }>;
@@ -409,9 +410,9 @@ export interface ApiAuthorAuthor extends Struct.CollectionTypeSchema {
       'api::author.author'
     > &
       Schema.Attribute.Private;
-    Password: Schema.Attribute.Password &
+    password: Schema.Attribute.Text &
       Schema.Attribute.SetMinMaxLength<{
-        minLength: 5;
+        minLength: 10;
       }>;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
@@ -656,10 +657,10 @@ export interface ApiWebsiteUserWebsiteUser extends Struct.CollectionTypeSchema {
       'api::website-user.website-user'
     > &
       Schema.Attribute.Private;
-    Password: Schema.Attribute.Password &
+    password: Schema.Attribute.Text &
       Schema.Attribute.Required &
       Schema.Attribute.SetMinMaxLength<{
-        minLength: 5;
+        minLength: 10;
       }>;
     prime_membership: Schema.Attribute.Decimal & Schema.Attribute.DefaultTo<0>;
     publishedAt: Schema.Attribute.DateTime;

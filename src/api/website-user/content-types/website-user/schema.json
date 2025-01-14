@@ -24,11 +24,6 @@
       "maxLength": 255,
       "unique": true
     },
-    "Password": {
-      "type": "password",
-      "minLength": 5,
-      "required": true
-    },
     "first_name": {
       "type": "string",
       "required": true,
@@ -55,6 +50,11 @@
       "relation": "oneToMany",
       "target": "api::comment.comment",
       "mappedBy": "website_user"
+    },
+    "password": {
+      "type": "text",
+      "required": true,
+      "minLength": 10
     }
   }
 }
