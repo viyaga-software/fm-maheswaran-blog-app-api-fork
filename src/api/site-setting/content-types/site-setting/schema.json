@@ -1,0 +1,79 @@
+{
+  "kind": "singleType",
+  "collectionName": "site_settings",
+  "info": {
+    "singularName": "site-setting",
+    "pluralName": "site-settings",
+    "displayName": "Site settings",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "maxLength": 255,
+      "required": false
+    },
+    "description": {
+      "type": "text",
+      "maxLength": 1000
+    },
+    "logo": {
+      "type": "string",
+      "maxLength": 255
+    },
+    "favicon": {
+      "type": "string",
+      "maxLength": 255
+    },
+    "primary_color": {
+      "type": "string",
+      "maxLength": 10
+    },
+    "secondary_color": {
+      "type": "string",
+      "maxLength": 10
+    },
+    "meta_keywords": {
+      "type": "string"
+    },
+    "meta_description": {
+      "type": "text"
+    },
+    "facebook_url": {
+      "type": "string",
+      "maxLength": 255
+    },
+    "x_url": {
+      "type": "string",
+      "maxLength": 255
+    },
+    "instagram_url": {
+      "type": "string",
+      "maxLength": 255
+    },
+    "linkedin_url": {
+      "type": "string",
+      "maxLength": 255
+    },
+    "youtube_url": {
+      "type": "string",
+      "maxLength": 255
+    },
+    "contact_email": {
+      "type": "string",
+      "maxLength": 255
+    },
+    "contact_phone": {
+      "type": "string",
+      "maxLength": 20
+    },
+    "address": {
+      "type": "string",
+      "maxLength": 500
+    }
+  }
+}
