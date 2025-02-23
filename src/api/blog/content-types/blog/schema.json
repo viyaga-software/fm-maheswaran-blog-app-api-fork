@@ -97,6 +97,11 @@
     "content": {
       "type": "text",
       "minLength": 2
+    },
+    "free_content": {
+      "type": "text",
+      "required": true,
+      "minLength": 10
     }
   }
 }

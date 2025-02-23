@@ -30,11 +30,6 @@
         "pending"
       ]
     },
-    "username": {
-      "type": "string",
-      "required": true,
-      "maxLength": 70
-    },
     "website_user": {
       "type": "relation",
       "relation": "manyToOne",
