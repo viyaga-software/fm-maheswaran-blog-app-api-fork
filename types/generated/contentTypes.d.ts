@@ -431,8 +431,9 @@ export interface ApiBlogCategorieBlogCategorie
   extends Struct.CollectionTypeSchema {
   collectionName: 'blog_categories';
   info: {
+    description: '';
     displayName: 'blog_categories';
-    pluralName: 'blog-categories';
+    pluralName: 'categories';
     singularName: 'blog-categorie';
   };
   options: {
@@ -459,6 +460,10 @@ export interface ApiBlogCategorieBlogCategorie
       Schema.Attribute.SetMinMaxLength<{
         maxLength: 70;
       }>;
+    parent_category: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::blog-categorie.blog-categorie'
+    >;
     parent_id: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<0>;
     publishedAt: Schema.Attribute.DateTime;
     slug: Schema.Attribute.String &
@@ -483,14 +488,14 @@ export interface ApiBlogBlog extends Struct.CollectionTypeSchema {
   };
   attributes: {
     author: Schema.Attribute.Relation<'manyToOne', 'api::author.author'>;
-    blog_categories: Schema.Attribute.Relation<
-      'manyToMany',
-      'api::blog-categorie.blog-categorie'
-    >;
     blog_status: Schema.Attribute.Enumeration<
       ['draft', 'published', 'deleted']
     > &
       Schema.Attribute.DefaultTo<'draft'>;
+    categories: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::blog-categorie.blog-categorie'
+    >;
     comments: Schema.Attribute.Relation<'oneToMany', 'api::comment.comment'>;
     comments_count: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<0>;
     content: Schema.Attribute.Text &
@@ -536,10 +541,13 @@ export interface ApiBlogBlog extends Struct.CollectionTypeSchema {
       }>;
     subtitle: Schema.Attribute.String &
       Schema.Attribute.SetMinMaxLength<{
-        maxLength: 255;
+        maxLength: 160;
       }>;
     tags: Schema.Attribute.JSON;
-    title: Schema.Attribute.String;
+    title: Schema.Attribute.String &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 100;
+      }>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -659,10 +667,6 @@ export interface ApiSiteSettingSiteSetting extends Struct.SingleTypeSchema {
       Schema.Attribute.SetMinMaxLength<{
         maxLength: 255;
       }>;
-    linkedin_url: Schema.Attribute.String &
-      Schema.Attribute.SetMinMaxLength<{
-        maxLength: 255;
-      }>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -675,16 +679,10 @@ export interface ApiSiteSettingSiteSetting extends Struct.SingleTypeSchema {
       }>;
     meta_description: Schema.Attribute.Text;
     meta_keywords: Schema.Attribute.String;
-    primary_color: Schema.Attribute.String &
-      Schema.Attribute.SetMinMaxLength<{
-        maxLength: 10;
-      }>;
+    meta_title: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
-    secondary_color: Schema.Attribute.String &
-      Schema.Attribute.SetMinMaxLength<{
-        maxLength: 10;
-      }>;
     title: Schema.Attribute.String &
+      Schema.Attribute.Required &
       Schema.Attribute.SetMinMaxLength<{
         maxLength: 255;
       }>;

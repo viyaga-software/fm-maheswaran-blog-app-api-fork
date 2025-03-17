@@ -13,7 +13,8 @@
   "pluginOptions": {},
   "attributes": {
     "title": {
-      "type": "string"
+      "type": "string",
+      "maxLength": 100
     },
     "image": {
       "type": "media",
@@ -26,7 +27,7 @@
     },
     "subtitle": {
       "type": "string",
-      "maxLength": 255
+      "maxLength": 160
     },
     "author": {
       "type": "relation",
@@ -88,7 +89,7 @@
       "target": "api::comment.comment",
       "mappedBy": "blog"
     },
-    "blog_categories": {
+    "categories": {
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::blog-categorie.blog-categorie",
