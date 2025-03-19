@@ -26,8 +26,11 @@
     "comment_status": {
       "type": "enumeration",
       "enum": [
+        "under review",
+        "approved",
         "flagged",
-        "pending"
+        "spam",
+        "deleted"
       ]
     },
     "website_user": {

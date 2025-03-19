@@ -568,7 +568,9 @@ export interface ApiCommentComment extends Struct.CollectionTypeSchema {
   };
   attributes: {
     blog: Schema.Attribute.Relation<'manyToOne', 'api::blog.blog'>;
-    comment_status: Schema.Attribute.Enumeration<['flagged', 'pending']>;
+    comment_status: Schema.Attribute.Enumeration<
+      ['under review', 'approved', 'flagged', 'spam', 'deleted']
+    >;
     content: Schema.Attribute.Text &
       Schema.Attribute.Required &
       Schema.Attribute.SetMinMaxLength<{
