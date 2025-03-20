@@ -14,7 +14,7 @@
   "attributes": {
     "title": {
       "type": "string",
-      "maxLength": 100
+      "maxLength": 60
     },
     "image": {
       "type": "media",
@@ -45,13 +45,12 @@
       "maxLength": 255
     },
     "featured_image": {
-      "type": "string",
-      "maxLength": 255,
+      "type": "text",
       "required": true
     },
     "excerpt": {
       "type": "string",
-      "maxLength": 400
+      "maxLength": 250
     },
     "blog_status": {
       "type": "enumeration",
@@ -73,11 +72,11 @@
     "seo_meta_title": {
       "type": "string",
       "required": false,
-      "maxLength": 255
+      "maxLength": 60
     },
     "seo_meta_description": {
       "type": "string",
-      "maxLength": 255
+      "maxLength": 160
     },
     "is_featured": {
       "type": "boolean",
@@ -96,8 +95,7 @@
       "inversedBy": "blogs"
     },
     "content": {
-      "type": "text",
-      "minLength": 2
+      "type": "text"
     },
     "free_content": {
       "type": "text",

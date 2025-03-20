@@ -498,22 +498,15 @@ export interface ApiBlogBlog extends Struct.CollectionTypeSchema {
     >;
     comments: Schema.Attribute.Relation<'oneToMany', 'api::comment.comment'>;
     comments_count: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<0>;
-    content: Schema.Attribute.Text &
-      Schema.Attribute.SetMinMaxLength<{
-        minLength: 2;
-      }>;
+    content: Schema.Attribute.Text;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     excerpt: Schema.Attribute.String &
       Schema.Attribute.SetMinMaxLength<{
-        maxLength: 400;
+        maxLength: 250;
       }>;
-    featured_image: Schema.Attribute.String &
-      Schema.Attribute.Required &
-      Schema.Attribute.SetMinMaxLength<{
-        maxLength: 255;
-      }>;
+    featured_image: Schema.Attribute.Text & Schema.Attribute.Required;
     free_content: Schema.Attribute.Text &
       Schema.Attribute.Required &
       Schema.Attribute.SetMinMaxLength<{
@@ -527,11 +520,11 @@ export interface ApiBlogBlog extends Struct.CollectionTypeSchema {
     publishedAt: Schema.Attribute.DateTime;
     seo_meta_description: Schema.Attribute.String &
       Schema.Attribute.SetMinMaxLength<{
-        maxLength: 255;
+        maxLength: 160;
       }>;
     seo_meta_title: Schema.Attribute.String &
       Schema.Attribute.SetMinMaxLength<{
-        maxLength: 255;
+        maxLength: 60;
       }>;
     slug: Schema.Attribute.String &
       Schema.Attribute.Required &
@@ -546,7 +539,7 @@ export interface ApiBlogBlog extends Struct.CollectionTypeSchema {
     tags: Schema.Attribute.JSON;
     title: Schema.Attribute.String &
       Schema.Attribute.SetMinMaxLength<{
-        maxLength: 100;
+        maxLength: 60;
       }>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
