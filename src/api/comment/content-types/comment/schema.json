@@ -33,7 +33,7 @@
         "deleted"
       ]
     },
-    "website_user": {
+    "user": {
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::website-user.website-user",

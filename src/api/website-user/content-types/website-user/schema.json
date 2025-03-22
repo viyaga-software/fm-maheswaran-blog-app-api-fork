@@ -45,16 +45,16 @@
       "type": "integer",
       "default": 1
     },
-    "comments": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::comment.comment",
-      "mappedBy": "website_user"
-    },
     "password": {
       "type": "text",
       "required": true,
       "minLength": 10
+    },
+    "comments": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::comment.comment",
+      "mappedBy": "user"
     }
   }
 }
