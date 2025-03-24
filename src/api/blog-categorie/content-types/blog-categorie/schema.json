@@ -41,6 +41,10 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::blog-categorie.blog-categorie"
+    },
+    "image": {
+      "type": "text",
+      "required": true
     }
   }
 }

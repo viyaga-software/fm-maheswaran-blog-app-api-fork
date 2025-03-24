@@ -448,6 +448,7 @@ export interface ApiBlogCategorieBlogCategorie
       Schema.Attribute.SetMinMaxLength<{
         maxLength: 255;
       }>;
+    image: Schema.Attribute.Text & Schema.Attribute.Required;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
