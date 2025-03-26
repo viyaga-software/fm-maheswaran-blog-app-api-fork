@@ -1,6 +1,6 @@
 module.exports = [
-  'strapi::logger',
-  'strapi::errors',
+  "strapi::logger",
+  "strapi::errors",
   {
     name: "strapi::security",
     config: {
@@ -13,25 +13,25 @@ module.exports = [
             "data:",
             "blob:",
             "dl.airtable.com",
-            "yourbucketname.s3.us-east-1.amazonaws.com", // change here
+            "fm-maheswaran-blog.s3.ap-southeast-1.amazonaws.com", // ✅ Correct bucket name & region
           ],
           "media-src": [
             "'self'",
             "data:",
             "blob:",
             "dl.airtable.com",
-            "yourbucketrname.s3.us-east-1.amazonaws.com", // change here
+            "fm-maheswaran-blog.s3.ap-southeast-1.amazonaws.com", // ✅ Correct bucket name & region
           ],
           upgradeInsecureRequests: null,
         },
       },
     },
   },
-  'strapi::cors',
-  'strapi::poweredBy',
-  'strapi::query',
-  'strapi::body',
-  'strapi::session',
-  'strapi::favicon',
-  'strapi::public',
+  "strapi::cors",
+  "strapi::poweredBy",
+  "strapi::query",
+  "strapi::body",
+  "strapi::session",
+  "strapi::favicon",
+  "strapi::public",
 ];
